@@ -4,6 +4,7 @@ from ..models import User
 from .forms import LoginForm,RegistrationForm
 from .. import db
 from . import auth
+from ..email import mail_message
 
 
 @auth.route('/registration', methods=['GET', 'POST'])
@@ -13,6 +14,9 @@ def registration():
         user = User(email = form.email.data, username = form.username.data, password = form.password.data)
         db.session.add(user)
         db.session.commit()
+
+        mail_message("Pomodoro","email/welcome_user",user.email,user=user)
+
         return redirect(url_for('auth.login'))
         title = 'NEW ACCOUNT'
     return render_template("auth/registration.html", registration_form=form)

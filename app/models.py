@@ -39,5 +39,9 @@ class Todo(db.Model):
     category = db.Column(db.String(255))
     description = db.Column(db.String(255),index=True)
 
+    def save_todos(self):
+        db.session(self)
+        db.session.commit()
+
     def __repr__(self):
         return f'Description:{self.description}'

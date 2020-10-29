@@ -12,7 +12,7 @@ def index():
     View root page that returns the index page and its data
     '''
     title = 'Pomodoro Tracker'
-    render_template('index.html', title=title)
+    return render_template('index.html', title=title)
 
 @main.route('/new_todo', methods=['GET','POST'])
 @login_required

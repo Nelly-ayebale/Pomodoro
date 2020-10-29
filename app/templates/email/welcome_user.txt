@@ -1,0 +1,2 @@
+Hello{{user.username}}
+We would like to warmly welcome you to Pomodoro, your timely session tracking application.

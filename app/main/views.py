@@ -2,7 +2,7 @@ from flask import render_template,request,redirect,url_for,abort
 from . import main
 from ..models import Todo,User
 from .forms import TodoForm, UpdateProfile
-import db,photos
+from .. import db,photos
 from flask_login import login_required,current_user
 
 
@@ -27,7 +27,7 @@ def new_todo():
 
         return redirect(url_for('main.index'))
     return render_template('new_todo.html', form=form)
-    
+
 @main.route('/user/<uname>')
 def profile(uname):
     user = User.query.filter_by(username = uname).first()
